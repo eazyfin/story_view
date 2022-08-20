@@ -379,6 +379,7 @@ class StoryView extends StatefulWidget {
   final List<StoryItem?> storyItems;
 
   final Color? activeColor;
+  final Color? inActiveColor;
 
   /// Callback for when a full cycle of story is shown. This will be called
   /// each time the full story completes when [repeat] is set to `true`.
@@ -417,6 +418,7 @@ class StoryView extends StatefulWidget {
     this.inline = false,
     this.onVerticalSwipeComplete,
     this.activeColor,
+    this.inActiveColor,
   });
 
   @override
@@ -641,6 +643,8 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
                   key: UniqueKey(),
                   activeColor:
                       widget.activeColor ?? Colors.white.withOpacity(0.8),
+                  inActiveColor:
+                      widget.inActiveColor ?? Colors.white.withOpacity(0.4),
                   indicatorHeight: widget.inline
                       ? IndicatorHeight.small
                       : IndicatorHeight.large,
@@ -731,6 +735,7 @@ class PageBar extends StatefulWidget {
   final List<PageData> pages;
   final Animation<double>? animation;
   final Color activeColor;
+  final Color inActiveColor;
   final IndicatorHeight indicatorHeight;
 
   PageBar(
@@ -739,6 +744,7 @@ class PageBar extends StatefulWidget {
     this.indicatorHeight = IndicatorHeight.large,
     Key? key,
     required this.activeColor,
+    required this.inActiveColor,
   }) : super(key: key);
 
   @override
@@ -786,6 +792,7 @@ class PageBarState extends State<PageBar> {
               indicatorHeight:
                   widget.indicatorHeight == IndicatorHeight.large ? 5 : 3,
               activeColor: widget.activeColor,
+              inActiveColor: widget.inActiveColor,
             ),
           ),
         );
@@ -801,11 +808,13 @@ class StoryProgressIndicator extends StatelessWidget {
   final double value;
   final double indicatorHeight;
   final Color activeColor;
+  final Color inActiveColor;
 
   StoryProgressIndicator(
     this.value, {
     this.indicatorHeight = 5,
     required this.activeColor,
+    required this.inActiveColor,
   });
 
   @override
@@ -819,7 +828,7 @@ class StoryProgressIndicator extends StatelessWidget {
         this.value,
       ),
       painter: IndicatorOval(
-        Colors.white.withOpacity(0.4),
+        inActiveColor,
         1.0,
       ),
     );
