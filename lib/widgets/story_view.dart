@@ -658,7 +658,7 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
               alignment: Alignment.centerRight,
               heightFactor: 1,
               child: GestureDetector(
-                behavior: HitTestBehavior.translucent,
+                behavior: HitTestBehavior.deferToChild,
                 onTapDown: (details) {
                   widget.controller.pause();
                 },
@@ -713,7 +713,7 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
             heightFactor: 1,
             child: SizedBox(
                 child: GestureDetector(
-                    behavior: HitTestBehavior.translucent,
+                    behavior: HitTestBehavior.deferToChild,
                     onTap: () {
                       widget.controller.previous();
                     }),
