@@ -620,13 +620,9 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: ElevatedButton(
-        child: Text('digdiug'),
-        onPressed: () {},
-      ),
-      backgroundColor: widget.backgroundColor ?? Colors.white,
-      body: Stack(
+    return Container(
+      color: widget.backgroundColor ?? Colors.white,
+      child: Stack(
         children: <Widget>[
           _currentView,
           Align(
@@ -662,7 +658,6 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
               alignment: Alignment.centerRight,
               heightFactor: 1,
               child: GestureDetector(
-                behavior: HitTestBehavior.deferToChild,
                 onTapDown: (details) {
                   widget.controller.pause();
                 },
@@ -716,11 +711,9 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
             alignment: Alignment.centerLeft,
             heightFactor: 1,
             child: SizedBox(
-                child: GestureDetector(
-                    behavior: HitTestBehavior.deferToChild,
-                    onTap: () {
-                      widget.controller.previous();
-                    }),
+                child: GestureDetector(onTap: () {
+                  widget.controller.previous();
+                }),
                 width: 70),
           ),
         ],
