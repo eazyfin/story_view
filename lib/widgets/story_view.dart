@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import '../controller/story_controller.dart';
 import '../utils.dart';
@@ -35,8 +36,10 @@ class StoryItem {
 
   /// The page content
   final Widget view;
+  final int index;
   StoryItem(
     this.view, {
+    required this.index,
     required this.duration,
     this.shown = false,
   });
@@ -52,6 +55,7 @@ class StoryItem {
   static StoryItem text({
     required String title,
     required Color backgroundColor,
+    required int index,
     Key? key,
     TextStyle? textStyle,
     bool shown = false,
@@ -99,6 +103,7 @@ class StoryItem {
         //color: backgroundColor,
       ),
       shown: shown,
+      index: index,
       duration: duration ?? Duration(seconds: 3),
     );
   }
@@ -109,6 +114,7 @@ class StoryItem {
     required String url,
     required StoryController controller,
     Key? key,
+    required int index,
     BoxFit imageFit = BoxFit.fitWidth,
     String? caption,
     bool shown = false,
@@ -157,6 +163,7 @@ class StoryItem {
         ),
       ),
       shown: shown,
+      index: index,
       duration: duration ?? Duration(seconds: 3),
     );
   }
@@ -168,6 +175,7 @@ class StoryItem {
     Text? caption,
     required StoryController controller,
     Key? key,
+    required int index,
     BoxFit imageFit = BoxFit.cover,
     Map<String, dynamic>? requestHeaders,
     bool shown = false,
@@ -211,6 +219,7 @@ class StoryItem {
         ),
       ),
       shown: shown,
+      index: index,
       duration: duration ?? Duration(seconds: 3),
     );
   }
@@ -221,6 +230,7 @@ class StoryItem {
     String url, {
     required StoryController controller,
     Key? key,
+    required int index,
     Duration? duration,
     BoxFit imageFit = BoxFit.fitWidth,
     String? caption,
@@ -261,6 +271,7 @@ class StoryItem {
           ),
         ),
         shown: shown,
+        index: index,
         duration: duration ?? Duration(seconds: 10));
   }
 
@@ -272,6 +283,7 @@ class StoryItem {
     Key? key,
     BoxFit imageFit = BoxFit.fitWidth,
     String? caption,
+    required int index,
     bool shown = false,
     Duration? duration,
   }) {
@@ -320,6 +332,7 @@ class StoryItem {
           ),
         ),
         shown: shown,
+        index: index,
         duration: duration ?? Duration(seconds: 3));
   }
 
@@ -331,6 +344,7 @@ class StoryItem {
     Key? key,
     Text? caption,
     bool shown = false,
+    required int index,
     bool roundedTop = true,
     bool roundedBottom = false,
     Duration? duration,
@@ -366,6 +380,7 @@ class StoryItem {
         ),
       ),
       shown: shown,
+      index: index,
       duration: duration ?? Duration(seconds: 3),
     );
   }
