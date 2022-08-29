@@ -380,6 +380,7 @@ class StoryView extends StatefulWidget {
 
   final Color? activeColor;
   final Color? inActiveColor;
+  final Color? backgroundColor;
 
   /// Callback for when a full cycle of story is shown. This will be called
   /// each time the full story completes when [repeat] is set to `true`.
@@ -419,6 +420,7 @@ class StoryView extends StatefulWidget {
     this.onVerticalSwipeComplete,
     this.activeColor,
     this.inActiveColor,
+    this.backgroundColor,
   });
 
   @override
@@ -619,7 +621,7 @@ class StoryViewState extends State<StoryView> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: widget.backgroundColor ?? Colors.white,
       child: Stack(
         children: <Widget>[
           _currentView,
